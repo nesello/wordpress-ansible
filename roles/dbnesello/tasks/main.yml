@@ -6,7 +6,9 @@
   apt: name={{ item }} state=present
   with_items:
     - mysql-server
-
+    - python-software-properties
+    - python-mysqldb
+    
 - name: Criando banco de dados do MYSQL
   mysql_db: name={{ wp_mysql_db }} state=present
 
