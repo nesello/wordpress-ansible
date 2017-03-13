@@ -1,0 +1,12 @@
+---
+- name: Automatizando Wordpress
+  hosts: wpnesello
+  remote_user: root
+  roles:
+  - wpnesello
+
+- name: Automatizando DB MySQL
+  hosts: dbnesello
+  remote_user: root
+  roles:
+  - dbnesello

@@ -1,0 +1,17 @@
+---
+- name: Atualizando a lista de repositorios APT em DBNESELLO
+  apt: update_cache=yes cache_valid_time=3600
+
+- name: Instalando dependencias do Banco de Dados MySQL
+  apt: name={{ item }} state=present
+  with_items:
+    - mysql-server
+
+- name: Criando banco de dados do MYSQL
+  mysql_db: name={{ wp_mysql_db }} state=present
+
+- name: Adicionando usurio mysql
+  mysql_user: 
+    name={{ wp_mysql_user }} 
+    password={{ wp_mysql_password }} 
+    priv=*.*:ALL
